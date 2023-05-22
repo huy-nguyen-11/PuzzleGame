@@ -8,6 +8,6 @@ public class GridSquare : MonoBehaviour
      public List<Sprite> normalImages; 
 
     public void SetImage(bool setFirstImage){
-        normalImnage.GetComponent<Image>().sprite = setFirstImage ? normalImages[1] : normalImages[0];
+        normalImnage.GetComponent<Image>().sprite = setFirstImage ? normalImages[1] : normalImages[0]; // true thì trả về hình ảnh trong mảng 1 , false thì trả về mảng 0.
     }
 }

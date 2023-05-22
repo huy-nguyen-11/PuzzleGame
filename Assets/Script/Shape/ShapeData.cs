@@ -13,7 +13,7 @@ public class ShapeData : ScriptableObject
     public bool[] column;
     private int _size;
 
-    public Row(){}
+    //public Row(){}
 
     public Row(int size){
         CreateRow(size);

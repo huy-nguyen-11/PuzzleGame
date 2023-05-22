@@ -13,7 +13,9 @@ public class GridGame : MonoBehaviour
     public float everySquareOffset = 0.0f;
 
     private Vector2 _offset = new Vector2(0.0f,0.0f) ;
-    private List<GameObject> _gridSquares = new List<GameObject>();
+    private List<GameObject> _gridSquares = new List<GameObject>();  
+
+    
 
 
     private void Start() {
@@ -33,7 +35,7 @@ public class GridGame : MonoBehaviour
          {
             for( var colum= 0 ; colum < colums ; ++colum){
                 _gridSquares.Add(Instantiate(gridsquare) as GameObject);// tao ra cac gridsquare sau do add vao danh sach _gridSquares ( as Gameobject la ep kieu ve doi tuong gameobject)
-                _gridSquares[_gridSquares.Count -1].transform.SetParent(this.transform);
+                _gridSquares[_gridSquares.Count -1].transform.SetParent(this.transform);// gọi đến đối tượng tượng cuối cùng trong danh sách _gridSquare , sau đó xét nó làm con của danh sách _gridsquares
                 _gridSquares[_gridSquares.Count -1].transform.localScale = new Vector3(squareScale,squareScale,squareScale);
                 _gridSquares[_gridSquares.Count -1].GetComponent<GridSquare>().SetImage(square_index %2 ==0);
                 square_index ++;
