@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-[CustomEditor(typeof(ShapeData), false)]
+[CustomEditor(typeof(ShapeData), false)]// attribute to edit shapeData
 [CanEditMultipleObjects]
 [System.Serializable]
 public class ShapeDrawer : Editor
@@ -47,9 +47,9 @@ public class ShapeDrawer : Editor
    }
 
    private void DrawBoardTable(){
-    var tableStyle = new GUIStyle("box");
-    tableStyle.padding = new RectOffset(10,10,10,10);
-    tableStyle.margin.left = 32;
+    // var tableStyle = new GUIStyle("box");
+    // tableStyle.padding = new RectOffset(10,10,10,10);
+    // tableStyle.margin.left = 30;
 
     var headerColumnStyle = new GUIStyle();
     headerColumnStyle.fixedWidth = 65;

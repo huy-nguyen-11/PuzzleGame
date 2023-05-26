@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GridGame : MonoBehaviour
 {
+    public ShapeStorage shapeStorage;
     public int colums = 0;
     public int rows = 0;
     public  float squaresgap = 0.1f;
@@ -15,7 +16,13 @@ public class GridGame : MonoBehaviour
     private Vector2 _offset = new Vector2(0.0f,0.0f) ;
     private List<GameObject> _gridSquares = new List<GameObject>();  
 
-    
+        private void OnEnable() {
+        GameEvents.CheckShapePlaced += CheckShapePlaced;
+    }
+
+    private void OnDisable() {
+        GameEvents.CheckShapePlaced -= CheckShapePlaced;
+    }
 
 
     private void Start() {
@@ -87,6 +94,17 @@ public class GridGame : MonoBehaviour
              
         }
        
+    }
+
+    private void CheckShapePlaced(){
+        foreach (var a in _gridSquares)
+        {
+            var gridsquare = a.GetComponent<GridSquare>();
+            if(gridsquare.UseSquare()==true){
+                gridsquare.ActiveSquare();
+            }
+        }
+        shapeStorage.GetCurentSelectedShape().DeactivateShape();
     }
 
 }

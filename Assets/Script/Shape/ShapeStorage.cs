@@ -15,4 +15,15 @@ public class ShapeStorage : MonoBehaviour
         }
     }
 
+    public Shape GetCurentSelectedShape(){
+        foreach (var e in shapeList)
+        {
+            if(e.OnStartPos()== false && e.AnyShapeSquareActive()){
+                return e ;
+            }
+        }
+
+        return null;
+    }
+
 }
