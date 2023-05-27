@@ -18,11 +18,11 @@ public class ShapeStorage : MonoBehaviour
     public Shape GetCurentSelectedShape(){
         foreach (var e in shapeList)
         {
-            if(e.OnStartPos()== false && e.AnyShapeSquareActive()){
+            if(e.OnStartPos()== false && e.AnyShapeSquareActive())
                 return e ;
-            }
+            
         }
-
+       // Debug.Log("khong co  shape duoc chon");
         return null;
     }
 

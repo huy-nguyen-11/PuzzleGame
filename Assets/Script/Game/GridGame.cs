@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GridGame : MonoBehaviour
 {
-    public ShapeStorage shapeStorage;
+    public ShapeStorage _shapeStorage;
     public int colums = 0;
     public int rows = 0;
     public  float squaresgap = 0.1f;
@@ -104,7 +104,9 @@ public class GridGame : MonoBehaviour
                 gridsquare.ActiveSquare();
             }
         }
-        shapeStorage.GetCurentSelectedShape().DeactivateShape();
+       // Debug.Log("da chon shape");
+
+       _shapeStorage.GetCurentSelectedShape().DeactiveShape();
     }
 
 }

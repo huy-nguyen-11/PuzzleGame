@@ -5,5 +5,5 @@ using UnityEngine;
 
 public class GameEvents : MonoBehaviour
 {
-   public static Action CheckShapePlaced ;
+   public static Action CheckShapePlaced;
 }

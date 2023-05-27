@@ -15,12 +15,12 @@ public class Shape : MonoBehaviour , IPointerClickHandler , IPointerUpHandler , 
 
 
     [SerializeField] int size = 100;
-    private bool shapeDragable = true ;
+   // private bool shapeDragable = true ;
     private Canvas _canvas;
     private Vector3 startPos;
     private bool _shapeActicve = true;
-    private Vector3 _shapeStartScale;
-    private RectTransform _rectTransform;
+     private Vector3 _shapeStartScale;
+     private RectTransform _rectTransform;
 
     private List<GameObject> currentShape = new List<GameObject>();
 
@@ -28,8 +28,8 @@ public class Shape : MonoBehaviour , IPointerClickHandler , IPointerUpHandler , 
         _shapeStartScale = this.GetComponent<RectTransform>().localScale;
         _rectTransform = this.GetComponent<RectTransform>();
         _canvas = this.GetComponentInParent<Canvas>();
-        shapeDragable = true ;
-        startPos = _rectTransform.localPosition;
+         //shapeDragable = true ;
+         startPos = _rectTransform.localPosition;
         _shapeActicve = true;
     }
 
@@ -47,17 +47,17 @@ public class Shape : MonoBehaviour , IPointerClickHandler , IPointerUpHandler , 
         return false;
     }
 
-     public void DeactivateShape(){
+     public void DeactiveShape(){
        if(_shapeActicve){
         foreach (var d in currentShape)
         {
-            d?.GetComponent<ShapeSquare>().DeactivateShape();
+            d?.GetComponent<ShapeSquare>().DeactivateShape();//check d != null then all method deactivate    
         }
        }
        _shapeActicve = false;
     }
 
-    public void ActivateShape(){
+    public void ActiveShape(){
         if(!_shapeActicve){
         foreach (var d in currentShape)
         {
