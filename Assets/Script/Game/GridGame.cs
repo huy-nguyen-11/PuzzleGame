@@ -16,7 +16,7 @@ public class GridGame : MonoBehaviour
     private Vector2 _offset = new Vector2(0.0f,0.0f) ;
     private List<GameObject> _gridSquares = new List<GameObject>();  
 
-        private void OnEnable() {
+    private void OnEnable() {
         GameEvents.CheckShapePlaced += CheckShapePlaced;
     }
 
@@ -97,16 +97,37 @@ public class GridGame : MonoBehaviour
     }
 
     private void CheckShapePlaced(){
-        foreach (var a in _gridSquares)
-        {
-            var gridsquare = a.GetComponent<GridSquare>();
-            if(gridsquare.UseSquare()==true){
-                gridsquare.ActiveSquare();
-            }
-        }
-       // Debug.Log("da chon shape");
+       // var squareIndexs = new List<int>();
 
-       _shapeStorage.GetCurentSelectedShape().DeactiveShape();
+        foreach (var square in _gridSquares)
+        {
+            var gridsquare = square.GetComponent<GridSquare>();
+            if(gridsquare.UseSquare()==true){
+                gridsquare.ActiveSquare(); 
+            }
+            // if(square.Selected && !square.SquareOccupied){
+            //     squareIndexs.Add(square.SquareIndex);
+            //     square.Selected = false;
+            //    //gridsquare.ActiveSquare();
+            // }
+        }
+
+        _shapeStorage.GetCurentSelectedShape().DeactiveShape();
+    //    var currentSelectedShape = _shapeStorage.GetCurentSelectedShape();
+    //    //Debug.Log(currentSelectedShape);
+    //    if(currentSelectedShape == null) return;
+
+    //    if(currentSelectedShape.data == squareIndexs.Count){
+    //     foreach (var _squareIdex in squareIndexs)
+    //     {
+    //         _gridSquares[_squareIdex].GetComponent<GridSquare>().PlaceShapeOnBoard();
+    //     }
+
+    //     currentSelectedShape.DeactiveShape();
+    //    }
+    //    else{
+    //     GameEvents.MoveShapeToStartPosition();
+    //    }
     }
 
 }

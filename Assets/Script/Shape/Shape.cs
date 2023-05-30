@@ -13,9 +13,10 @@ public class Shape : MonoBehaviour , IPointerClickHandler , IPointerUpHandler , 
     [HideInInspector]
     public ShapeData currentShapedata ;
 
+    public int data {get;set;}
 
     [SerializeField] int size = 100;
-   // private bool shapeDragable = true ;
+    private bool shapeDragable = true ;
     private Canvas _canvas;
     private Vector3 startPos;
     private bool _shapeActicve = true;
@@ -28,19 +29,33 @@ public class Shape : MonoBehaviour , IPointerClickHandler , IPointerUpHandler , 
         _shapeStartScale = this.GetComponent<RectTransform>().localScale;
         _rectTransform = this.GetComponent<RectTransform>();
         _canvas = this.GetComponentInParent<Canvas>();
-         //shapeDragable = true ;
+         shapeDragable = true ;
          startPos = _rectTransform.localPosition;
         _shapeActicve = true;
+        
     }
+    // private void Start() {
+    //     if(startPos==endPos){
+    //         DeactiveShape();
+    //     }
+    // }
+    
 
+    // private void OnEnable(){
+    //     GameEvents.MoveShapeToStartPosition += MoveShapeToStartPosition;
+    // }
+
+    // private void OnDisable(){
+    //     GameEvents.MoveShapeToStartPosition -= MoveShapeToStartPosition;
+    // }
      public bool OnStartPos(){
         return _rectTransform.localPosition == startPos ;
         }
 
     public bool AnyShapeSquareActive(){
-        foreach (var c in currentShape)
+        foreach (var square in currentShape)
         {
-            if(c.gameObject.activeSelf){
+            if(square.gameObject.activeSelf){
                 return true;
             }
         }
@@ -49,9 +64,9 @@ public class Shape : MonoBehaviour , IPointerClickHandler , IPointerUpHandler , 
 
      public void DeactiveShape(){
        if(_shapeActicve){
-        foreach (var d in currentShape)
+        foreach (var square in currentShape)
         {
-            d?.GetComponent<ShapeSquare>().DeactivateShape();//check d != null then all method deactivate    
+            square?.GetComponent<ShapeSquare>().DeactivateShape();//check d != null then all method deactivate    
         }
        }
        _shapeActicve = false;
@@ -59,9 +74,9 @@ public class Shape : MonoBehaviour , IPointerClickHandler , IPointerUpHandler , 
 
     public void ActiveShape(){
         if(!_shapeActicve){
-        foreach (var d in currentShape)
+        foreach (var square in currentShape)
         {
-            d?.GetComponent<ShapeSquare>().ActivateShape();
+            square?.GetComponent<ShapeSquare>().ActivateShape();
         }
        }
        _shapeActicve = true;
@@ -235,6 +250,10 @@ public class Shape : MonoBehaviour , IPointerClickHandler , IPointerUpHandler , 
        public void OnPointerDown(PointerEventData eventData){
 
        }
+    
+    // private void MoveShapeToStartPosition(){
+    //     _rectTransform.transform.localPosition = startPos;
+    // }
       
 
    
